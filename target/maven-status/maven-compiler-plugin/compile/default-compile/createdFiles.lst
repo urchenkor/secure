@@ -1,0 +1,4 @@
+com\secure\repos\UserRepos.class
+com\secure\Application.class
+com\secure\domain\User.class
+com\secure\controller\MainController.class

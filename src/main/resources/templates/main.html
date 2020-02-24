@@ -1,0 +1,26 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles/style.css" th:href="@{/styles/style.css}"/>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+<h1>Hello, mf. I'm your main page</h1>
+    <br>
+    <hr>
+    <b>form:</b>
+    <br>
+<form action="#" th:action="@{addSubscriber}" method="post">
+    <div><label>First name: <input type="text" name="firstName" /></label></div>
+    <div><label>Last name: <input type="text" name="lastName" /></label></div>
+    <div><input type="submit" value="add subscriber"/></div>
+</form>
+
+<a href="/nomain" class="my_hov_0">nomain</a>
+</body>
+</html>

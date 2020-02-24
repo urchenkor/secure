@@ -1,0 +1,28 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nomain</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles/style.css" th:href="@{/styles/style.css}"/>
+</head>
+<body>
+<h1>This is nomain page.</h1>
+<br>
+<hr>
+<table border="1">
+    <tr>
+        <th>first name</th>
+        <th>last name</th>
+    </tr>
+    <tr th:each="subscriber :${subscribers}">
+        <td th:text="${subscriber.firstName}">1</td>
+        <td th:text="${subscriber.lastName}">2</td>
+    </tr>
+</table>
+
+<div>
+    <a href="/main" class="my_hov_0">go to main page</a>
+</div>
+</body>
+</html>
