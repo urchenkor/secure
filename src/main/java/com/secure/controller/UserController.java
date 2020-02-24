@@ -13,7 +13,5 @@ public class UserController {
     @Autowired
     UserRepos userRepos;
 
-    @GetMapping
-    public String userList()
 }
 
