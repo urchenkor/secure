@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collections;
 
@@ -21,16 +22,23 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Model model) {
+    public String addUser(@RequestParam (defaultValue = "USER") String[] role,
+                          User user, Model model) {
         User userFromDB = userRepos.findByUsername(user.getUsername());
         if (userFromDB != null) {
             model.addAttribute("message", "User exists!");
             return "registration";
         }
-
+        for (int i = 0; i < role.length - 1; i++) {
+            if (role[i].equals(Role.USER)) {
+                user.setRoles(Collections.singleton(Role.USER));
+            } else {
+                user.setRoles(Collections.singleton(Role.ADMIN));
+            }
+        }
         user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
         userRepos.save(user);
         return "redirect:/login";
     }
 }
+

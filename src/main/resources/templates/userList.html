@@ -1,0 +1,30 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles/style.css" th:href="@{/styles/style.css}"/>
+</head>
+<body>
+<h1>User list page.</h1>
+<br>
+<hr>
+<table border="1">
+    <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+    <tr th:each="user :${users}">
+        <td th:text="${user.username}">1</td>
+        <td th:text="${user.roles}">2</td>
+        <td><a href="/user" th:href="@{/user/{userid}}" class="my_hov_0">Edit</a></td>
+    </tr>
+</table>
+
+<div>
+    <a href="/main" class="my_hov_0">go to main page</a>
+</div>
+</body>
+</html>
