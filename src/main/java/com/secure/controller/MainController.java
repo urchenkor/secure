@@ -18,7 +18,7 @@ public class MainController {
     @Autowired
     private SubscriberRepos subscriberRepos;
 
-    @PostMapping("addSubscriber")
+    @PostMapping("/main")
     public String addSubscriber(@RequestParam String firstName, @RequestParam String lastName,
                           Model model) {
         Subscriber subscriber = new Subscriber(firstName, lastName);

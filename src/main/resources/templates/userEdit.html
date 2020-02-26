@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="styles/style.css" th:href="@{/styles/style.css}"/>
 
 </head>
-<body><!--
-<form action="/user" method="post">
-    <label><input type="text" name="username" value="${user.username}"> </label>
-    <div>
-        <label><input type="checkbox" name="${role}" th:each="role :${roles}"></label>
+<body>
+<form action="#" th:action="@{/user}" method="post">
+    <input type="hidden" th:value="${user.id}" name="userId">
+    <input type="text" name="username" th:value="${user.username}">
+    <input type="text" name="password" th:value="${user.password}">
+    <div><label th:each="role :${roles}">
+        <input type="checkbox" th:name="${role}" th:checked="${user.roles.contains(role)}" th:text="${role}">
+    </label>
     </div>
-
-    <label><input type="hidden" value="${user.id}" name="userId"></label>
     <button type="submit">Save</button>
-</form>-->
+</form>
 </body>

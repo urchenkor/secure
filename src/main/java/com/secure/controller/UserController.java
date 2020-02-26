@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    UserRepos userRepos;
+    private UserRepos userRepos;
 
     @GetMapping
     public String userList(Model model) {
@@ -34,10 +34,12 @@ public class UserController {
     @PostMapping
     public String userSave(
             @RequestParam String username,
+            @RequestParam String password,
             @RequestParam Map<String, String> form,
             @RequestParam("userId") User user
     ) {
         user.setUsername(username);
+        user.setPassword(password);
 
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)

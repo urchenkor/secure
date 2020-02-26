@@ -22,20 +22,13 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(@RequestParam (defaultValue = "USER") String[] role,
-                          User user, Model model) {
+    public String addUser(User user, Model model) {
         User userFromDB = userRepos.findByUsername(user.getUsername());
         if (userFromDB != null) {
             model.addAttribute("message", "User exists!");
             return "registration";
         }
-        for (int i = 0; i < role.length - 1; i++) {
-            if (role[i].equals(Role.USER)) {
-                user.setRoles(Collections.singleton(Role.USER));
-            } else {
-                user.setRoles(Collections.singleton(Role.ADMIN));
-            }
-        }
+        user.setRoles(Collections.singleton(Role.USER));
         user.setActive(true);
         userRepos.save(user);
         return "redirect:/login";
