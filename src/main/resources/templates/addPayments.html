@@ -1,0 +1,23 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payments</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
+</head>
+<body>
+<h1>Внесение средств</h1>
+<br>
+<hr>
+<b>form:</b>
+<br>
+<form action="#" th:action="@{/addPayments}" method="post">
+    <div><label>Номер договора<input type="text" name="nd" /></label></div>
+    <div><label>Сумма<input type="text" name="value" /></label></div>
+    <div><input type="submit" value="add payments"/></div>
+</form>
+
+<a href="/admin" class="my_hov_0">Вернуться назад</a>
+</body>
+</html>

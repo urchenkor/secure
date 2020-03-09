@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main</title>
+    <title>Личный кабинет</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
 </head>
@@ -10,11 +10,11 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
-<h1>Hello, mf. I'm your main page</h1>
-    <br>
-    <hr>
-    <b>form:</b>
-    <br>
+<h1>Добро пожаловать @{user.username}</h1>
+<br>
+<hr>
+<b>form:</b>
+<br>
 <a href="/personalAcc" class="my_hov_0">Личный кабинет</a>
 <a href="/admin" class="my_hov_0">Панель администратора</a>
 

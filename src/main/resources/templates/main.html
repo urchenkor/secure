@@ -4,7 +4,7 @@
 <head>
     <title>Main</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="styles/style.css" th:href="@{/styles/style.css}"/>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
 </head>
 <body>
 <form th:action="@{/logout}" method="post">
@@ -15,14 +15,8 @@
     <hr>
     <b>form:</b>
     <br>
-<form action="#" th:action="@{/main}" method="post">
-    <div><label>First name: <input type="text" name="firstName" /></label></div>
-    <div><label>Last name: <input type="text" name="lastName" /></label></div>
-    <div><input type="submit" value="add subscriber"/></div>
-</form>
+<a href="/personalAcc" class="my_hov_0">Личный кабинет</a>
+<a href="/admin" class="my_hov_0">Панель администратора</a>
 
-<a href="/nomain" class="my_hov_0">nomain</a>
-<br>
-<a href="/user" class="my_hov_0">go to user list</a>
 </body>
 </html>

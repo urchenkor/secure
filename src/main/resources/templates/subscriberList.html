@@ -1,0 +1,36 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Subscribers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
+</head>
+<body>
+<h1>Список абонентов</h1>
+<br>
+<hr>
+<table border="1">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Адрес</th>
+        <th>Номер Договора</th>
+        <th>Баланс</th>
+    </tr>
+    <tr th:each="subscriber :${subscribers}">
+        <td th:text="${subscriber.lastName}">1</td>
+        <td th:text="${subscriber.firstName}">2</td>
+        <td th:text="${subscriber.patronymic}">3</td>
+        <td th:text="${subscriber.address}">4</td>
+        <td th:text="${subscriber.nd}">5</td>
+        <td th:text="${subscriber.balance}">6</td>
+    </tr>
+</table>
+
+<div>
+    <a href="/admin" class="my_hov_0"> Вернуться </a>
+</div>
+</body>
+</html>

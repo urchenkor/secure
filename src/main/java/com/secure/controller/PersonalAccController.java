@@ -1,9 +1,9 @@
 package com.secure.controller;
 
-import com.secure.domain.Subscriber;
+import com.secure.domain.Role;
 import com.secure.repos.SubscriberRepos;
+import com.secure.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -12,20 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
-public class MainController {
+public class PersonalAccController {
     @Autowired
     private SubscriberRepos subscriberRepos;
+    private UserRepos userRepos;
 
 
-
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-
-    @GetMapping("/")
-    public String mainPage() {
+    @GetMapping("/personalAcc")
+    public String personalAcc(Model model) {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
         for (GrantedAuthority auth : authentication.getAuthorities()) {
@@ -34,11 +33,5 @@ public class MainController {
             }
         }
         return "personalAcc";
-    }
-
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        return "/admin";
     }
 }
