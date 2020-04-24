@@ -1,22 +1,68 @@
 
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Личный кабинет</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
-</head>
-<body>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
-<h1>Добро пожаловать @{user.username}</h1>
-<br>
-<hr>
-<b>form:</b>
-<br>
-<a href="/personalAcc" class="my_hov_0">Личный кабинет</a>
-<a href="/admin" class="my_hov_0">Панель администратора</a>
+    <head>
+        <title>Личный кабинет</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../static/personal.css" th:href="@{/static/personal.css}"/>
+    </head>
 
-</body>
+    <body>
+        <div class="all_content">
+            <header>
+                <h1>Список абонентов</h1>
+            </header>
+
+            <nav>
+                <div class="logout"><form th:action="@{/logout}" method="post" id="sing_out_button">
+                    <input type="submit"  class="logout_button"value="Выйти"/>
+                </form>
+                </div>
+                <ul>
+                    <li class="selected"><a href="/Account">Главная</a></li>
+                    <li><a href="/addPayments">Услуги</a></li>
+                </ul>
+            </nav>
+            <div class="content my_table">
+                <h2>
+                    Добро пожаловать <span th:utext="${user.firstName}"></span>
+                     <span th:utext="${user.lastName}"></span>
+                </h2>
+                    <table>
+                        <tr>
+                            <td class="left_row">Номер Договора</td>
+                            <td th:text="${user.nd}">1</td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">ФИО</td>
+                            <td th:text="${user.firstName}"> <span th:text="${user.lastName}">
+                                                        </span> <span th:text="${user.patronymic}"> </span></td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">Адрес</td>
+                            <td th:text="${user.address}"></td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">Электронная почта</td>
+                            <td>Email</td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">Контакты</td>
+                            <td>Phones</td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">Состояние счета</td>
+                            <td th:text="${user.balance}">6</td>
+                        </tr>
+                        <tr>
+                            <td class="left_row">Тарифный план</td>
+                            <td>Тариф</td>
+                        </tr>
+                    </table>
+            </div>
+        </div>
+
+
+
+    </body>
 </html>

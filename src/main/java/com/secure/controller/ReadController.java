@@ -1,7 +1,7 @@
 package com.secure.controller;
 
-import com.secure.domain.Subscriber;
-import com.secure.repos.SubscriberRepos;
+import com.secure.domain.User;
+import com.secure.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ReadController {
     @Autowired
-    private SubscriberRepos subscriberRepos;
+    private UserRepos userRepos;
 
-    @GetMapping("/subscriberList")
-    public String mainPage(Model model) {
-        Iterable<Subscriber> subscribers = subscriberRepos.findAll();
-        model.addAttribute("subscribers", subscribers);
-        return "subscriberList";
-    }
+
 
 }

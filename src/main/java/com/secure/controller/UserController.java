@@ -35,34 +35,9 @@ public class UserController {
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
-        return "userEdit";
+        return "subscriberEdit";
     }
-    @PostMapping
-    public String userSave(
-            @RequestParam String username,
-            @RequestParam String password,
-            @RequestParam Map<String, String> form,
-            @RequestParam("userId") User user
-    ) {
-        user.setUsername(username);
-        user.setPassword(passwordEncoder.encode(password));
 
-        Set<String> roles = Arrays.stream(Role.values())
-                .map(Role::name)
-                .collect(Collectors.toSet());
-
-        user.getRoles().clear();
-
-        for (String key : form.keySet()) {
-            if (roles.contains(key)) {
-                user.getRoles().add(Role.valueOf(key));
-            }
-        }
-
-        userRepos.save(user);
-
-        return "redirect:/user";
-    }
 
     @GetMapping("/delete/{user}")
     public String deleteUser(@PathVariable User user) {

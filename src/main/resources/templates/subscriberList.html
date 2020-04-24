@@ -1,36 +1,56 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Subscribers</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
-</head>
-<body>
-<h1>Список абонентов</h1>
-<br>
-<hr>
-<table border="1">
-    <tr>
-        <th>Фамилия</th>
-        <th>Имя</th>
-        <th>Отчество</th>
-        <th>Адрес</th>
-        <th>Номер Договора</th>
-        <th>Баланс</th>
-    </tr>
-    <tr th:each="subscriber :${subscribers}">
-        <td th:text="${subscriber.lastName}">1</td>
-        <td th:text="${subscriber.firstName}">2</td>
-        <td th:text="${subscriber.patronymic}">3</td>
-        <td th:text="${subscriber.address}">4</td>
-        <td th:text="${subscriber.nd}">5</td>
-        <td th:text="${subscriber.balance}">6</td>
-    </tr>
-</table>
+    <head>
+        <title>Список абонентов</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../static/admin.css" th:href="@{/static/admin.css}"/>
+    </head>
+    <body>
+        <div class="all_content">
+            <header>
+                <h1>Список абонентов</h1>
+            </header>
 
-<div>
-    <a href="/admin" class="my_hov_0"> Вернуться </a>
-</div>
-</body>
+            <nav>
+                <div class="logout"><form th:action="@{/logout}" method="post" id="sing_out_button">
+                    <input type="submit"  class="logout_button"value="Выйти"/>
+                </form>
+                </div>
+                <ul>
+                    <li ><a href="/subscriber/add">Создать абонента</a></li>
+                    <li><a href="/addPayments">Внести средства</a></li>
+                    <li class="selected"><a href="/subscriber/list">Список абонентов</a></li>
+                    <li><a href="/paymentList">Список платежей</a></li>
+                </ul>
+            </nav>
+
+            <div class="content my_table">
+                <table border="1">
+                    <tr>
+                        <th>Фамилия</th>
+                        <th>Имя</th>
+                        <th>Отчество</th>
+                        <th>Адрес</th>
+                        <th>Номер Договора</th>
+                        <th>Баланс</th>
+                        <th>Роли</th>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
+                    <tr th:each="user :${users}">
+                        <td th:text="${user.lastName}">1</td>
+                        <td th:text="${user.firstName}">2</td>
+                        <td th:text="${user.patronymic}">3</td>
+                        <td th:text="${user.address}">4</td>
+                        <td th:text="${user.nd}">5</td>
+                        <td th:text="${user.balance}">6</td>
+                        <td th:text="${user.roles}">3</td>
+                        <td><a href="/user" th:href="@{'/subscriber/' + ${user.id}}">Edit</a></td>
+                        <td><a href="/user" th:href="@{'/subscriber/delete/' + ${user.id}}">Удалить</a>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

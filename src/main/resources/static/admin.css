@@ -1,0 +1,119 @@
+body{
+    background-color: #80B5BA;
+    color: #306B65;
+}
+div.all_content {
+    padding: 15px;
+    width: 800px;
+    height: 720px;
+    margin: 0px auto 0px auto;
+}
+header {
+    height: 50px;
+    margin: 10px 10px 0px 10px;
+    padding: 15px;
+    background-color: 	#C2F7FB;
+}
+
+.logout {
+    float: right;
+}
+
+input.logout_button {
+    font-family: serif;
+    font-weight: bold;
+    font-size: 1em;
+    background-color:  #306B65;
+    border: none;
+    color: #C2F7FB;
+    padding: 5px
+    ;
+}
+
+nav {
+    margin: 10px 10px 0px 10px;
+    background-color: 	#C2F7FB;
+}
+
+nav ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 5px 0 5px 0;
+}
+
+nav ul li {
+    display: inline;
+    padding: 5px 10px 6px 10px;
+}
+
+nav ul li a:link, nav ul li a:visited {
+    text-decoration: none;
+    font-weight: bold;
+    color:  #2F97A1;
+}
+nav ul li.selected , nav ul li.selected a {
+    color: #C2F7FB;
+    background-color: #80B5BA;
+}
+
+div.content {
+    background-color: 	#C2F7FB;
+    margin: 10px;
+    padding: 10px;
+}
+
+div.table_container {
+    display: table;
+}
+div.table_row {
+    display: table-row;
+}
+
+div.table_row > label, div.table_row > input , div.table_row > p {
+    display: table-cell;
+    margin: 5px;
+}
+div.table_row > label {
+    text-align: right;
+}
+
+a.my_hov_0 {
+    color: antiquewhite;
+    outline: none;
+    text-decoration: underline;
+}
+a.my_hov_0:hover {
+    color: #1b5f49;
+    outline: none;
+    text-decoration: none;
+}
+a.my_hov_0:visited {
+    color: darkcyan;
+}
+
+div.my_table > table {
+    margin-left: 20px;
+    margin-right: 20px;
+    border-spacing: 0px;
+}
+
+div.my_table > th, div.my_table td {
+    padding: 5px;
+}
+
+div.my_table > th {
+    text-align: center;
+}
+
+input.add_button {
+    background-color: #80B5BA;
+    border: none;
+    font: bold 1em serif;
+    color: #C2F7FB;
+}
+input.add_button:hover {
+    background-color: #306B65;
+    border: none;
+    font: bold 1em serif;
+    color: #C2F7FB;
+}

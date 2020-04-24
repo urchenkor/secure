@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Редактор</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../static/admin.css" th:href="@{/static/admin.css}"/>
+    </head>
+    <body>
+        <div class="all_content">
+            <header>
+                <h1>Редактирование абонента</h1>
+            </header>
+
+            <nav>
+                <div class="logout"><form th:action="@{/logout}" method="post" id="sing_out_button">
+                    <input type="submit"  class="logout_button"value="Выйти"/>
+                </form>
+                </div>
+                <ul>
+                    <li><a href="/subscriber/add">Создать абонента</a></li>
+                    <li><a href="/addPayments">Внести средства</a></li>
+                    <li><a href="/subscriber/list">Список абонентов</a></li>
+                    <li><a href="/paymentList">Список платежей</a></li>
+                </ul>
+            </nav>
+
+            <div class="content">
+                <div class="table_container">
+                    <form action="#" th:action="@{/subscriber/save}" method="post">
+                        <input type="hidden" th:value="${user.id}" name="userId">
+                        <div class="table_row">
+                            <label for="firstName">Имя</label>
+                            <input type="text" name="firstName" th:value="${user.firstName}" id="firstName">
+                        </div>
+                        <div class="table_row">
+                            <label for="lastName">Фамилия</label>
+                            <input type="text" name="lastName" th:value="${user.lastName}" id="lastName">
+                        </div>
+                        <div class="table_row"><label for="patronymic">Отчество</label>
+                            <input type="text" name="patronymic" th:value="${user.patronymic}" id="patronymic">
+                        </div>
+                        <div class="table_row"><label for="address">Адрес</label>
+                            <input type="text" name="address" th:value="${user.address}" id="address">
+                        </div>
+                        <div class="table_row">
+                            <label for="nd">Номер договора</label>
+                            <input type="text" name="nd" th:value="${user.nd}" id="nd">
+                        </div>
+                        <div class="table_row"
+                        ><label for="password">Пароль</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+                        <div class="table_row"><label th:each="role :${roles}">
+                            <input type="checkbox" th:name="${role}" th:checked="${user.roles.contains(role)}" th:text="${role}">
+                        </label>
+                        </div>
+                        <div class="table_row">
+                            <label></label>
+                            <input type="submit" value="Сохранить">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

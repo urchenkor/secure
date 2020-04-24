@@ -1,23 +1,48 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Payments</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
-</head>
-<body>
-<h1>Внесение средств</h1>
-<br>
-<hr>
-<b>form:</b>
-<br>
-<form action="#" th:action="@{/addPayments}" method="post">
-    <div><label>Номер договора<input type="text" name="nd" /></label></div>
-    <div><label>Сумма<input type="text" name="value" /></label></div>
-    <div><input type="submit" value="add payments"/></div>
-</form>
+    <head>
+        <title>Payments</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../static/admin.css" th:href="@{/static/admin.css}"/>
+    </head>
 
-<a href="/admin" class="my_hov_0">Вернуться назад</a>
-</body>
+    <body>
+        <div class="all_content">
+
+            <header>
+                <h1>Внесение средств</h1>
+            </header>
+
+
+            <nav>
+                <div class="logout"><form th:action="@{/logout}" method="post" id="sing_out_button">
+                    <input type="submit" class="logout_button" value="Выйти"/>
+                </form>
+                </div>
+                <ul>
+                    <li><a href="/subscriber/add">Создать абонента</a></li>
+                    <li class="selected"><a href="/addPayments">Внести средства</a></li>
+                    <li><a href="/subscriber/list">Список абонентов</a></li>
+                    <li><a href="/paymentList">Список платежей</a></li>
+                </ul>
+            </nav>
+
+            <div class="content">
+                <div class="table_container">
+                    <form action="#" th:action="@{/addPayments}" method="post">
+                        <div class="table_row"><label for="nd">Номер договора:</label>
+                            <input type="text" name="nd" id="nd" min="4" max="6"/>
+                        <p th:text="${notExist}">message</p></div>
+
+                        <div class="table_row"><label for="value">Сумма платежа</label>
+                            <input type="number" name="value" id="value" min="1" max="10000"/></div>
+
+                        <div class="table_row"><label></label>
+                            <input class="add_button" type="submit" value="Внести средства" />
+                            <p th:text="${done}">payment is done</p></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1,7 +1,5 @@
 package com.secure.controller;
 
-import com.secure.domain.Subscriber;
-import com.secure.repos.SubscriberRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-    @Autowired
-    private SubscriberRepos subscriberRepos;
 
 
 
@@ -25,20 +21,23 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String mainPage() {
+    public String mainPage(Model model) {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
         for (GrantedAuthority auth : authentication.getAuthorities()) {
             if ("ADMIN".equals(auth.getAuthority())) {
-                return "admin";
+                return "addSubscriber";
             }
         }
-        return "personalAcc";
+
+        String authUser = authentication.getName();
+        model.addAttribute("userName", authUser);
+        return "redirect:/Account";
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/admin")
     public String admin(Model model) {
-        return "/admin";
+        return "/addSubscriber";
     }
 }

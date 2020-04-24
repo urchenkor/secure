@@ -4,5 +4,5 @@ import com.secure.domain.Payment;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PaymentRepos extends CrudRepository<Payment, Long> {
-    Payment findByNd(Integer nd);
+    Payment findByNd(String nd);
 }

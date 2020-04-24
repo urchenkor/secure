@@ -1,30 +1,43 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Payments</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="../static/style.css" th:href="@{/static/style.css}"/>
-</head>
-<body>
-<h1>Список платежей</h1>
-<br>
-<hr>
-<table border="1">
-    <tr>
-        <th>Номер договора</th>
-        <th>Сумма</th>
-        <th>Дата</th>
-    </tr>
-    <tr th:each="pay :${payments}">
-        <td th:text="${pay.nd}">1</td>
-        <td th:text="${pay.value}">2</td>
-        <td th:text="${pay.paymentDate}">3</td>
-        </tr>
-</table>
+    <head>
+        <title>Payments</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="../static/admin.css" th:href="@{/static/admin.css}"/>
+    </head>
+    <body>
+        <div class="all_content">
+            <header>
+                <h1>Список платежей</h1>
+            </header>
 
-<div>
-    <a href="/admin" class="my_hov_0"> Вернуться </a>
-</div>
-</body>
+            <nav>
+                <div class="logout"><form th:action="@{/logout}" method="post" id="sing_out_button">
+                    <input type="submit"  class="logout_button"value="Выйти"/>
+                </form>
+                </div>
+                <ul>
+                    <li><a href="/subscriber/add">Создать абонента</a></li>
+                    <li><a href="/addPayments">Внести средства</a></li>
+                    <li><a href="/subscriber/list">Список абонентов</a></li>
+                    <li class="selected"><a href="/paymentList">Список платежей</a></li>
+                </ul>
+            </nav>
+
+            <div class="my_table content">
+                <table border="1">
+                    <tr>
+                        <th>Номер договора</th>
+                        <th>Сумма</th>
+                        <th>Дата</th>
+                    </tr>
+                    <tr th:each="pay :${payments}">
+                        <td th:text="${pay.nd}">1</td>
+                        <td th:text="${pay.value}" >2</td>
+                        <td th:text="${pay.paymentDate}">3</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
 </html>

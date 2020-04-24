@@ -1,24 +1,32 @@
-body{
-    height: 1080px;
-    background: radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B);
+body {
+    background-color: #80B5BA;
+    color: #306B65;
 }
-a.my_hov_0 {
-    color: antiquewhite;
-    outline: none;
-    text-decoration: underline;
-}
-a.my_hov_0:hover {
-    color: #1b5f49;
-    outline: none;
-    text-decoration: none;
-}
-a.my_hov_0:visited {
-    color: darkcyan;
+header {
+    background-color: #C2F7FB;
+    width: 800px;
+    height: 120px;
+    margin: 0 auto 0 auto;
 }
 
-.container {
-    width: 100%;
-    max-width: 1024px;
-    padding: 0 15px;
-    margin: 0 auto;
+.table_container {
+    margin: 17px;
+    display: table;
+    float: right;
 }
+.table_row {
+    display: table-row;
+}
+
+div.table_row > label , div.table_row > input  div.table_row > span {
+    display: table-cell;
+    margin: 2px;
+
+}
+div.table_row > label {
+    text-align: right;
+}
+div#error > label {
+    color:  red;
+}
+

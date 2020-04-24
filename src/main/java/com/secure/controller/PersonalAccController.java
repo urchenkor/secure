@@ -1,7 +1,6 @@
 package com.secure.controller;
 
-import com.secure.domain.Role;
-import com.secure.repos.SubscriberRepos;
+import com.secure.domain.User;
 import com.secure.repos.UserRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,26 +11,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PersonalAccController {
     @Autowired
-    private SubscriberRepos subscriberRepos;
     private UserRepos userRepos;
 
 
-    @GetMapping("/personalAcc")
+    @GetMapping("/Account")
     public String personalAcc(Model model) {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
-        for (GrantedAuthority auth : authentication.getAuthorities()) {
-            if ("ADMIN".equals(auth.getAuthority())) {
-                return "admin";
-            }
-        }
+        String authUser = authentication.getName();
+        User user = userRepos.findByUsername(authUser);
+        model.addAttribute("user", user);
         return "personalAcc";
     }
 }
